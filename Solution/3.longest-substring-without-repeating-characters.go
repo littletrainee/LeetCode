@@ -1,4 +1,4 @@
-package main
+package LeetCode
 
 /*
  * @lc app=leetcode id=3 lang=golang
@@ -9,21 +9,20 @@ package main
 // @lc code=start
 func lengthOfLongestSubstring(s string) int {
 	var (
-		dummy  map[byte]bool = make(map[byte]bool)
-		left   int
-		right  int
-		maxLen int
-		char   byte
-		d      byte
+		dummy               map[byte]uint8 = make(map[byte]uint8)
+		left, right, maxLen int
+		char, d             byte
 	)
+
 	for right < len(s) {
 		char = s[right]
-		dummy[char] = !dummy[char]
+		dummy[char]++
 		right++
-		for !dummy[char] {
+
+		for dummy[char] > 1 {
 			d = s[left]
 			left++
-			dummy[d] = !dummy[d]
+			dummy[d]--
 		}
 		if right-left > maxLen {
 			maxLen = right - left

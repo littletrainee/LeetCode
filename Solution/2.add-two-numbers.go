@@ -1,4 +1,4 @@
-package main
+package LeetCode
 
 /*
  * @lc app=leetcode id=2 lang=golang
@@ -14,18 +14,19 @@ package main
  *     Next *ListNode
  * }
  */
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
+// type ListNode struct {
+// 	Val  int
+// 	Next *ListNode
+// }
 
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	var (
 		dummyHead *ListNode = &ListNode{Val: 0}
-		carried   int
 		current   *ListNode = dummyHead
-		l1Val     int
-		l2Val     int
+		carried   int       = 0
+		l1Val     int       = 0
+		l2Val     int       = 0
+		columSum  int       = 0
 	)
 	for l1 != nil || l2 != nil || carried != 0 {
 		if l1 != nil {
@@ -40,7 +41,7 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 		} else {
 			l2Val = 0
 		}
-		columSum := l1Val + l2Val + carried
+		columSum = l1Val + l2Val + carried
 		carried = columSum / 10
 		current.Next = &ListNode{Val: columSum % 10}
 		current = current.Next
