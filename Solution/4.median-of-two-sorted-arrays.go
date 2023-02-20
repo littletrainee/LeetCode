@@ -10,18 +10,23 @@ import "sort"
 
 // @lc code=start
 func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
-	var (
-		// merge two slice
-		num []int = append(nums1, nums2...)
-		// get the center index
-		m int = len(num) / 2
-	)
+	// Combine both arrays into one array
+	var num []int = append(nums1, nums2...)
+	// Find the middle index of the combined array
+	var m int = len(num) / 2
+
+	// Sort the combined array in ascending order
 	sort.Ints(num)
-	// len(num) = 奇數
+
+	// Check if the combined array has odd or even number of elements
 	if len(num)%2 == 1 {
+		// If the combined array has odd number of elements, return the middle
+		// element
 		return float64(num[m])
 	}
-	// len(num) = 偶數
+
+	// If the combined array has even number of elements, return the average of
+	// the two middle elements
 	return float64(num[m-1]+num[m]) / 2
 }
 

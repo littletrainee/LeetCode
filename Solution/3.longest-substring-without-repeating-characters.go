@@ -8,12 +8,17 @@ package LeetCode
 
 // @lc code=start
 func lengthOfLongestSubstring(s string) int {
+	// Initialize a map to keep track of the characters and the number of times
+	// they appear in the substring
 	var (
 		dummy               map[byte]uint8 = make(map[byte]uint8)
 		left, right, maxLen int
 		char, d             byte
 	)
 
+	// Move the right pointer to expand the substring and add new characters to
+	// the map. If a character appears more than once, move the left pointer to
+	// shrink the substring
 	for right < len(s) {
 		char = s[right]
 		dummy[char]++
@@ -24,6 +29,8 @@ func lengthOfLongestSubstring(s string) int {
 			left++
 			dummy[d]--
 		}
+		// Check if the current substring is longer than the previous longest
+		// substring
 		if right-left > maxLen {
 			maxLen = right - left
 		}

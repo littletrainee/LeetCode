@@ -12,17 +12,19 @@ func L(s string) string {
 
 // @lc code=start
 func longestPalindrome(s string) string {
-	var (
-		max          string          // Store the longest palindrome substring found so far
-		length       int    = len(s) // Length of the input string
-		NoPalindrome bool            // Whether the current substring is a palindrome or not
-	)
+	// Store the longest palindrome substring found so far
+	var max string
+	// Length of the input string
+	var length int = len(s)
+	// Whether the current substring is a palindrome or not
+	var NoPalindrome bool
 
 	// Loop through all possible substrings
 	for start := 0; start < length; start++ {
 		for end := length; end > start; end-- {
-			// If the length of the longest palindrome found so far is >= the  length of the current substring,
-			// we can stop checking since there is no way the current substring can be longer than the longest
+			// If the length of the longest palindrome found so far is >= the
+			// length of the current substring, we can stop checking since there
+			// is no way the current substring can be longer than the longest
 			// palindrome found so far
 			if len(max) >= end-start {
 				break
