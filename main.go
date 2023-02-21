@@ -7,6 +7,8 @@ import (
 )
 
 func main() {
-	var s = "babad"
-	fmt.Println(L(s))
+	s := 1534236469
+	// o := 1056389759
+
+	fmt.Println(R(s))
 }

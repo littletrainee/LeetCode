@@ -7,8 +7,7 @@ import (
 
 func TestZigZag(t *testing.T) {
 	var (
-		s       string = "AB"
-		numRows int    = 1
+		s int = 1534236469
 	)
-	fmt.Println(convert(s, numRows))
+	fmt.Println(reverse(s))
 }

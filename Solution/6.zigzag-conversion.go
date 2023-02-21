@@ -1,9 +1,5 @@
 package LeetCode
 
-func C(s string, numRows int) string {
-	return (convert(s, numRows))
-}
-
 /*
  * @lc app=leetcode id=6 lang=golang
  *
@@ -12,7 +8,8 @@ func C(s string, numRows int) string {
 
 // @lc code=start
 func convert(s string, numRows int) string {
-	// If numRows is less than 2, the string cannot be converted, so return the original string
+	// If numRows is less than 2, the string cannot be converted, so return the
+	// original string
 	if numRows < 2 {
 		return s
 	}
@@ -28,23 +25,27 @@ func convert(s string, numRows int) string {
 		result []rune
 	)
 
-	// Traverse the input string, adding each character to the appropriate row in sliceholder
+	// Traverse the input string, adding each character to the appropriate row
+	// in sliceholder
 	for _, v := range s {
 		sliceholder[order] = append(sliceholder[order], v)
 
-		// If we are currently traversing the rows in reverse order, move to the previous row
+		// If we are currently traversing the rows in reverse order, move to the
+		// previous row
 		if reverse {
 			order--
 		} else { // Otherwise, move to the next row
 			order++
 		}
 
-		// If we have reached the last row, start traversing the rows in reverse order
+		// If we have reached the last row, start traversing the rows in reverse
+		// order
 		if order == numRows-1 {
 			reverse = true
 		}
 
-		// If we have reached the first row, start traversing the rows in forward order
+		// If we have reached the first row, start traversing the rows in
+		// forward order
 		if order == 0 {
 			reverse = false
 		}
