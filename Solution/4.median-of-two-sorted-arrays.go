@@ -10,10 +10,12 @@ import "sort"
 
 // @lc code=start
 func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
-	// Combine both arrays into one array
-	var num []int = append(nums1, nums2...)
-	// Find the middle index of the combined array
-	var m int = len(num) / 2
+	var (
+		// Combine both arrays into one array
+		num []int = append(nums1, nums2...)
+		// Find the middle index of the combined array
+		m int = len(num) / 2
+	)
 
 	// Sort the combined array in ascending order
 	sort.Ints(num)
