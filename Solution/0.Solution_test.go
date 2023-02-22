@@ -5,9 +5,10 @@ import (
 	"testing"
 )
 
-func TestZigZag(t *testing.T) {
+func TestSolution(t *testing.T) {
 	var (
-		s int = 1534236469
+		// s string = "  -0012a42"
+		s string = "   -42" // 0
 	)
-	fmt.Println(reverse(s))
+	fmt.Println(myAtoi(s))
 }
