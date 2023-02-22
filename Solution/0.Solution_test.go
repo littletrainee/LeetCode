@@ -7,8 +7,7 @@ import (
 
 func TestSolution(t *testing.T) {
 	var (
-		// s string = "  -0012a42"
-		s string = "   -42" // 0
+		x int = 121
 	)
-	fmt.Println(myAtoi(s))
+	fmt.Println(isPalindrome(x))
 }
