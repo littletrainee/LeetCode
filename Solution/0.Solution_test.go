@@ -7,7 +7,8 @@ import (
 
 func TestSolution(t *testing.T) {
 	var (
-		x int = 121
+		s string = "aab"
+		p string = "c*a*b"
 	)
-	fmt.Println(isPalindrome(x))
+	fmt.Println(isMatch(s, p))
 }
