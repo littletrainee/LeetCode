@@ -6,9 +6,6 @@ import (
 )
 
 func TestSolution(t *testing.T) {
-	var (
-		s string = "aab"
-		p string = "c*a*b"
-	)
-	fmt.Println(isMatch(s, p))
+	var num int = 1994
+	fmt.Println(intToRoman(num))
 }
