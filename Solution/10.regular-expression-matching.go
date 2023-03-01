@@ -19,9 +19,10 @@ func isMatch(s string, p string) bool {
 		// First, try to match without the character and the '*' Use recursion
 		// to compare the remaining s and p.
 		return isMatch(s, p[:len(p)-2]) ||
-			// If the above failed, then check if the last character of s matches
-			// the character before '*' in pattern and that the remaining s matches
-			// the same pattern (this is where '*' matches multiple occurrences)
+			// If the above failed, then check if the last character of s
+			// matches the character before '*' in pattern and that the
+			// remaining s matches the same pattern (this is where '*' matches
+			// multiple occurrences)
 			len(s) > 0 && (p[len(p)-2] == '.' || s[len(s)-1] == p[len(p)-2]) &&
 				isMatch(s[:len(s)-1], p)
 	}

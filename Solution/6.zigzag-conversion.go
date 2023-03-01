@@ -51,7 +51,8 @@ func convert(s string, numRows int) string {
 		}
 	}
 
-	// Concatenate the characters in each row of sliceholder to create the final converted string
+	// Concatenate the characters in each row of sliceholder to create the final
+	// converted string
 	for _, v := range sliceholder {
 		result = append(result, v...)
 	}

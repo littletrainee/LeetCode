@@ -14,11 +14,11 @@ func maxArea(height []int) int {
 
 	// Initialize variables for storing max area and the two pointers
 	var max int
-	// var max float64
 
 	// Iterate through the array while the two pointers don't overlap
 	for left, right := 0, len(height)-1; left <= right; {
-		// Calculate the area between the two pointers and update max if necessary
+		// Calculate the area between the two pointers and update max if
+		// necessary.
 		if height[left] < height[right] {
 			max = Max(max, height[left]*(right-left))
 			// max = math.Max(max, float64(height[left]*(right-left)))

@@ -12,43 +12,48 @@ func L(s string) string {
 
 // @lc code=start
 func longestPalindrome(s string) string {
-	var (
-		// Store the longest palindrome substring found so far
-		max string
-		// Length of the input string
-		length int = len(s)
-		// Whether the current substring is a palindrome or not
-		NoPalindrome bool
-	)
+	if len(s) < 1 {
+		return ""
+	}
+	// starting index of the longest palindrome
+	var start int
+	// ending index of the longest palindrome
+	var end int
+	// length of the palindrome with i as the center (odd length)
+	var len1 int
+	// length of the palindrome with i and i+1 as centers (even length)
+	var len2 int
 
-	// Loop through all possible substrings
-	for start := 0; start < length; start++ {
-		for end := length; end > start; end-- {
-			// If the length of the longest palindrome found so far is >= the
-			// length of the current substring, we can stop checking since there
-			// is no way the current substring can be longer than the longest
-			// palindrome found so far
-			if len(max) >= end-start {
-				break
-			}
-
-			NoPalindrome = false
-			for i := start; i <= (start+end-1)/2; i++ {
-				if s[i] != s[end-1-i+start] {
-					NoPalindrome = true
-					break
-				}
-			}
-
-			// Check if the current substring is a palindrome and update max if
-			// it is
-			if !NoPalindrome {
-				max = s[start:end]
-			}
+	for i := 0; i < len(s); i++ {
+		// check for palindrome with i as center
+		len1 = expandAroundCenter(s, i, i)
+		// check for palindrome with i and i+1 as centers
+		len2 = expandAroundCenter(s, i, i+1)
+		// if palindrome with i as center is longest so far
+		if len1 > len2 && len1 > end-start {
+			start = i - len1/2 // update start and end indices
+			end = i + len1/2
+			continue // continue to next iteration
+		}
+		// if palindrome with i and i+1 as centers is longest so far
+		if len2 > end-start {
+			start = i - len2/2 + 1 // update start and end indices
+			end = i + len2/2
+			continue // continue to next iteration
 		}
 	}
+	return s[start : end+1] // return the longest palindrome substring
+}
 
-	return max
+// function to check for palindrome by expanding around a center index
+func expandAroundCenter(s string, left int, right int) int {
+	// expand around center while palindrome condition is met
+	for left >= 0 && right < len(s) && s[left] == s[right] {
+		left--
+		right++
+	}
+	// return the length of the palindrome substring found
+	return right - left - 1
 }
 
 // @lc code=end
