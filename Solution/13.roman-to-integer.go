@@ -13,9 +13,11 @@ func romanToInt(s string) int {
 	var value [7]uint16 = [7]uint16{1, 5, 10, 50, 100, 500, 1000}
 
 	// Initialize variables to keep track of sum and previous/current values
-	var sum uint16
-	var previous uint16
-	var current uint16
+	var (
+		sum      uint16
+		previous uint16
+		current  uint16
+	)
 
 	// Loop through each character in the input string
 	for _, v := range []byte(s) {

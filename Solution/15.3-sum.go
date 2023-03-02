@@ -12,10 +12,13 @@ import "sort"
 func threeSum(nums []int) [][]int {
 	// sort the input array in ascending order
 	sort.Ints(nums)
-	var result [][]int
-	var length int = len(nums) - 1
-	var target int
-	var sum int
+	var (
+		result [][]int
+		length int = len(nums) - 1
+		target int
+		sum    int
+	)
+
 	for start := 0; start < length-1; start++ {
 		// skip duplicate elements to avoid duplicates in the result
 		if start > 0 && nums[start] == nums[start-1] {

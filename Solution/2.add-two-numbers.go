@@ -25,10 +25,10 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	var (
 		dummyHead *ListNode = &ListNode{Val: 0}
 		current   *ListNode = dummyHead
-		carried   int       = 0
-		l1Val     int       = 0
-		l2Val     int       = 0
-		columSum  int       = 0
+		carried   uint8
+		l1Val     uint8
+		l2Val     uint8
+		columSum  uint8
 	)
 	// This loop continues until there are no morenodes left in the input lists,
 	// and there is no carried value remaining.
@@ -37,13 +37,13 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 		// lists. If one of the lists has already reached the end, then l1Val or
 		// l2Val is set to 0.
 		if l1 != nil {
-			l1Val = l1.Val
+			l1Val = uint8(l1.Val)
 			l1 = l1.Next
 		} else {
 			l1Val = 0
 		}
 		if l2 != nil {
-			l2Val = l2.Val
+			l2Val = uint8(l2.Val)
 			l2 = l2.Next
 		} else {
 			l2Val = 0
@@ -58,7 +58,7 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 		// A new ListNode object is created with the value equal to the
 		// remainder of columSum divided by 10. This is the value that is stored
 		// in the current column.
-		current.Next = &ListNode{Val: columSum % 10}
+		current.Next = &ListNode{Val: int(columSum % 10)}
 		// The current pointer is moved to the next node in the list.
 		current = current.Next
 	}

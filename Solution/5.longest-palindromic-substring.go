@@ -15,14 +15,16 @@ func longestPalindrome(s string) string {
 	if len(s) < 1 {
 		return ""
 	}
-	// starting index of the longest palindrome
-	var start int
-	// ending index of the longest palindrome
-	var end int
-	// length of the palindrome with i as the center (odd length)
-	var len1 int
-	// length of the palindrome with i and i+1 as centers (even length)
-	var len2 int
+	var (
+		// starting index of the longest palindrome
+		start int
+		// ending index of the longest palindrome
+		end int
+		// length of the palindrome with i as the center (odd length)
+		len1 int
+		// length of the palindrome with i and i+1 as centers (even length)
+		len2 int
+	)
 
 	for i := 0; i < len(s); i++ {
 		// check for palindrome with i as center

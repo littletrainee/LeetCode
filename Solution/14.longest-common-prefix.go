@@ -17,8 +17,10 @@ func longestCommonPrefix(strs []string) string {
 
 	// initialize a strings.Builder to store the common prefix, and a byte
 	// variable to store the current letter being compared
-	var prefix strings.Builder
-	var letter byte
+	var (
+		prefix strings.Builder
+		letter byte
+	)
 
 	// iterate through each letter in the first string in the slice
 	for i := 0; i < len(strs[0]); i++ {

@@ -8,17 +8,22 @@ package LeetCode
 
 // @lc code=start
 func twoSum(nums []int, target int) []int {
-	// Loop through all pairs of elements in the input array
-	for i := 0; i < len(nums); i++ {
-		for j := i + 1; j < len(nums); j++ {
-			// If the sum of the current pair of elements is equal to the
-			// target, return their indices as an array
-			if target == nums[i]+nums[j] {
-				return []int{i, j}
-			}
+	// Create a map to store the index of each element in the nums slice and its
+	// corresponding value
+	var indexMap map[int]int = make(map[int]int)
+
+	// Loop through the nums slice
+	for currentIndex, currentValue := range nums {
+		// Calculate the anotherIndex of the current value and target
+		if anotherIndex, isExist := indexMap[target-currentValue]; isExist {
+			// If the complement is in the indexMap, return the indices of the
+			// two elements whose sum equals to the target
+			return []int{anotherIndex, currentIndex}
 		}
+		// Otherwise, add the current value and its index to the indexMap
+		indexMap[currentValue] = currentIndex
 	}
-	// If no pair of elements adds up to the target, return an empty array
+	// If no two elements sum up to the target, return an empty slice
 	return []int{}
 }
 
