@@ -6,9 +6,12 @@ import (
 )
 
 func TestSolution(t *testing.T) {
-	var (
-		num    []int = []int{4, 0, 5, -5, 3, 3, 0, -4, -5}
-		target int   = -2
-	)
-	fmt.Println(threeSumClosest(num, target))
+	// head := &ListNode{Val: 1, Next: &ListNode{Val: 2, Next: &ListNode{Val: 3, Next: &ListNode{Val: 4, Next: &ListNode{Val: 5, Next: nil}}}}}
+	head := &ListNode{Val: 1, Next: &ListNode{Val: 2}}
+	n := 2
+	head = removeNthFromEnd(head, n)
+	for head != nil {
+		fmt.Println(head)
+		head = head.Next
+	}
 }
