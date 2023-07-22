@@ -16,26 +16,30 @@ class Solution(object):
             return 0
 
         length = len(nums)
-        longest_lengths = [1] * length
-        counts = [1] * length
+        lis = [1] * length  # 對應nums順序的當前數字有可以有多少的長度
+        counts = [1] * length  # 指的是當前順序子序列的數量
 
-        for i in range(length):
-            for j in range(i):
-                if nums[j] < nums[i]:
-                    if longest_lengths[i] < longest_lengths[j] + 1:
-                        longest_lengths[i] = longest_lengths[j] + 1
-                        counts[i] = counts[j]
-                    elif longest_lengths[i] == longest_lengths[j] + 1:
-                        counts[i] += counts[j]
+        for index in range(length):
+            for beforeIndex in range(index):
+                if nums[beforeIndex] < nums[index]:
+                    if lis[index] < lis[beforeIndex] + 1:
+                        lis[index] = lis[beforeIndex] + 1
+                        counts[index] = counts[beforeIndex]
+                    elif lis[index] == lis[beforeIndex] + 1:
+                        counts[index] += counts[beforeIndex]
 
-        max_length = max(longest_lengths)
+        max_length = max(lis)
 
         result_count = 0
-        for length, count in zip(longest_lengths, counts):
+        for length, count in zip(lis, counts):
             if length == max_length:
                 result_count += count
 
         return result_count
 
+
+x = [1, 3, 5, 4, 7]
+s = Solution()
+s.findNumberOfLIS(x)
 
 # @lc code=end
