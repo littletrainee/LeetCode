@@ -1,2 +1,5 @@
 # 忽略資料夾
 .vscode/
+
+# 忽略的檔案
+0.testdata.py
